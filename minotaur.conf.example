@@ -1,0 +1,241 @@
+---
+pools:
+  nicehash:
+    enable: true
+    primary_region: eu
+    user: 3CypS5xQSiPW5vtXpB7yiwdBnY3xoyEBeM
+    worker_name: minotaur
+    append_device_id_to_worker_name: true
+    timeout: 3
+    default_algorithm: equihash
+    pool_fee: 2
+  ethermine:
+    enable: true
+    shortname: em
+    endpoints:
+      - eu1.ethermine.org:4444
+      - us1.ethermine.org:4444
+    algorithm: daggerhashimoto
+    miners:
+    - ethminer
+    whattomine_coin_no: 151
+    # make sure this is in quotes or it will be interpreted as a long
+    user: "0x034A58d8ED07f2F0D1BF2c028537077Eb1544963"
+    worker_name: minotaur
+    append_device_id_to_worker_name: true
+    timeout: 3
+    pool_fee: 1
+  flypool:
+    enable: true
+    shortname: fp
+    endpoints:
+      - eu1-zcash.flypool.org:3333
+      - us1-zcash.flypool.org:3333
+    algorithm: equihash
+    miners:
+    - excavator
+    - ewbf
+    - ccminer
+    - ccminer2
+    whattomine_coin_no: 166
+    user: t1dgpdwMfqrVyR49Bbs5x81b9jKgnXmFnck
+    worker_name: m001
+    append_device_id_to_worker_name: false
+    timeout: 3
+    pool_fee: 1
+  moneroocean:
+    enable: false
+    shortname: mo
+    endpoints:
+    - gulf.moneroocean.stream:10004
+    algorithm: cryptonight
+    miners:
+    - excavator
+    - xmrig_nvidia
+    - ccminer
+    - ccminer2
+    whattomine_coin_no: 101
+    user: 463tWEBn5XZJSxLU6uLQnQ2iY9xuNcDbjLSjkn3XAXHCbLrTTErJrBWYgHJQyrCwkNgYvyV3z8zctJLPCZy24jvb3NiTcTJ
+    worker_name: m001
+    append_device_id_to_worker_name: false
+    timeout: 3
+    pool_fee: 0
+  zclmine:
+    enable: true
+    shortname: zm
+    endpoints:
+    - eu.zclmine.pro:9009
+    algorithm: equihash
+    miners:
+    - excavator
+    - xmrig_nvidia
+    - ccminer
+    - ccminer2
+    whattomine_coin_no: 167
+    user: t1R1QanaSCFDvQR9sdj84FrAsKMGmjD5edy
+    worker_name: m001
+    append_device_id_to_worker_name: false
+    timeout: 3
+    pool_fee: 0
+  miningpoolhub:
+    enable: false
+    user: m4rkw
+    timeout: 3
+    default_algorithm: equihash
+# this will be 1.1 if you use auto-exchange
+    pool_fee: 0.9
+    hub_workers:
+      cryptonight: m001
+      equihash: m002
+      daggerhashimoto: m003
+      lyra2rev2: m004
+      neoscrypt: m005
+      keccak: m006
+      skein: m007
+      groestl: m008
+
+# % benefit to switch for, 0.04 means 4%
+profit_switch_threshold: 0.04
+
+# interval for the main loop, or how often to check everything and decide
+# whether we should switch algorithm
+refresh_interval: 15
+
+# how often to retrieve stats from pools (seconds)
+pool_refresh_interval: 300
+
+# when enabled set max power limit when transitioning from one algo to
+# another. if disabled the greater of the power limits associated with
+# the two algorithms will be used.
+use_max_power_limit_when_switching: true
+
+# comment algorithms in this list to disable them
+algorithms:
+  single:
+    - nist5
+    - neoscrypt
+    - equihash
+    - pascal
+    - decred
+    - sia
+    - lbry
+    - blake2s
+    - lyra2rev2
+    - cryptonight
+    - daggerhashimoto
+    - keccak
+    - scrypt
+    - x11
+    - x11gost
+    - x13
+    - x15
+    - whirlpoolx
+    - qubit
+    - quark
+    - blake256r8
+    - skunk
+    - skein
+    - groestl
+  double:
+    - daggerhashimoto_pascal
+    - daggerhashimoto_decred
+    - daggerhashimoto_sia
+# warn if the hashrate is this % above or below the calibrated
+# rate
+hashrate_alert_threshold_percent: 3
+# timeout for getting a >0 hashrate after starting an algorithm worker
+algo_startup_timeout: 120
+# hashrate is not displayed or verified during the warmup period
+algo_warmup_period_mins: 2
+# miners to use
+miners:
+  ccminer:
+    enable: true
+    port: 3457
+    ip: 127.0.0.1
+    timeout: 10
+  excavator:
+    enable: true
+    ip: 127.0.0.1
+    port: 3456
+    timeout: 10
+# example for 1070ti with excavator 1.4.4a
+#    algo_params:
+#      neoscrypt:
+#        B: 720
+#        M: 3
+device_profiles:
+  default:
+    algorithm: all
+    device: all
+# example overclock for 1080ti running all algorithms
+#  1080ti_oc:
+#    algorithm: all
+#    device: 1080ti
+#    gpu_clock_offset: 125
+#    memory_clock_offset: 1500
+
+# example restricting power for a device class to 250W
+#power_limit:
+#  1080ti: 250
+
+# example device classes
+#device_classes:
+#  "1080ti_asus":
+#    - 0
+#    - 1
+#  "1080ti_evga":
+#    - 2
+#    - 3
+
+debug: false
+logging:
+  log_file: /var/log/minotaur/minotaur.log
+  calibration_log_dir: /var/log/minotaur
+  max_size_mb: 100
+  log_file_count: 7
+live_data:
+  profitability_averages:
+    - 900
+    - 3600
+    - 86400
+  power_draw_averages:
+    - 300
+    - 600
+    - 900
+# a running xorg display is required for changing power limits and
+# clock frequencies
+xorg_display_no: 0
+electricity_per_kwh: 0.1194
+electricity_currency: GBP
+
+# how many watts the system uses other than GPUs
+system_draw_watts: 200
+
+# calibration settings, see README
+calibration:
+  hashrate_stabilisation_timeout_mins: 10
+  hashrate_stabilisation_tolerance: 0.5
+  hashrate_stabilisation_consecutive_readings_required: 6
+  algorithm_start_timeout: 180
+  power_tuning:
+    enable: true
+    decrement_watts: 2
+# acceptable loss should be at least 2x hashrate_stabilisation_tolerance
+    acceptable_loss_percent: 1
+# if enabled any stable run of an algorithm over 2 mins will update the
+# calibration data
+  update_calibration_data_over_time: true
+  update_calibration_data_after_mins: 3
+# threshold percent for updating the calibration data over time, eg the
+# value must be within 3-10% of the calibrated rate
+  calibration_update_threshold_min_pc: 1
+  calibration_update_threshold_max_pc: 10
+leave_graphics_clocks_alone: true
+#ignore_devices: [3]
+stats:
+  enable: true
+  stats_file: /var/log/minotaur/minotaur.csv
+  algos_file: /var/log/minotaur/algorithms.csv
+  max_size_mb: 10
+  max_file_count: 7

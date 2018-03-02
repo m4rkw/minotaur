@@ -1,0 +1,33 @@
+
+device class: 1080Ti
+
+                              ccminer    ccminer2                 excavator  xmrig_nvidia
+-------------------------------------------------------------------------------------------------
+blake256r8                  8.31 GH/s           -                         -             -
+blake2s                     7.27 GH/s                             7.40 GH/s             -
+cryptonight                899.52 H/s           -                367.36 H/s    896.70 H/s
+daggerhashimoto                     -           -                35.91 MH/s             -
+daggerhashimoto_decred              -           -    35.05 MH/s / 2.47 GH/s             -
+daggerhashimoto_pascal              -           -  34.73 MH/s / 972.54 MH/s             -
+daggerhashimoto_sia                 -           -    33.10 MH/s / 1.88 GH/s             -
+decred                      5.00 GH/s           -                 5.07 GH/s             -
+equihash                            -           -                773.59 H/s             -
+keccak                      1.38 GH/s                             1.41 GH/s             -
+lbry                      483.75 MH/s                           492.68 MH/s             -
+lyra2rev2                           -           -                69.78 MH/s             -
+neoscrypt                   1.58 MH/s                             1.69 MH/s             -
+nist5                      74.11 MH/s                            83.48 MH/s             -
+pascal                              -           -                 1.86 GH/s             -
+quark                      33.67 MH/s                                     -             -
+qubit                      31.78 MH/s                                     -             -
+scrypt                              -           -                         -             -
+sia                                 -           -                 3.19 GH/s             -
+skunk                      52.30 MH/s           -                         -             -
+whirlpoolx                          -           -                         -             -
+x11                                 -                                     -             -
+x11gost                                24.19 MH/s                         -             -
+x13                                 -                                     -             -
+x15                                             -                         -             -
+
+note: - means not supported
+

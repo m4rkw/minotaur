@@ -1,0 +1,5 @@
+*.pyc
+minotaur.conf
+minotaur.build/*
+minotaur.exe
+minotaur.rel
